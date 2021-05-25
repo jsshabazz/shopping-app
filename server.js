@@ -12,6 +12,50 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+app.get("/api/users", function(req,res){
+
+  res.json([]);
+
+});
+
+app.get("/api/user/:id", function(req,res){
+console.log(req.params);
+  res.json([]);
+
+});
+
+app.post("/api/user", function(req,res){
+console.log(req.body);
+  res.json([]);
+
+});
+
+app.get("/api/product", function(req,res){
+
+  res.json([]);
+
+});
+
+app.post("/api/product/:id", function(req,res){
+
+  res.json([]);
+
+});
+
+app.get("/api/user/:id/cart/product", function(req,res){
+
+  res.json([]);
+
+});
+
+app.post("/api/user/:id/cart/product", function(req,res){
+
+  res.json([]);
+
+});
+
+
+
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -22,3 +66,4 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+
