@@ -16,6 +16,18 @@ Product.init(
     Product_name: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    Product_description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Product_price: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    Product_image: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },
   {
@@ -23,7 +35,7 @@ Product.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Product'
+    modelName: 'product'
   }
 );
 

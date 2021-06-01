@@ -1,8 +1,9 @@
 const express = require("express");
+const sequelize = require('./config/connection');
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-
+const db = require("./models");
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -12,47 +13,96 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-app.get("/api/users", function(req,res){
-
-  res.json([]);
-
+app.get("/api/users",  function(req,res){
+   console.log("Inside: /api/user");
+  
+    db.User.findAll().then(function(userData){
+      res.status(200).json(userData);
+    });
+    
+    
+ 
 });
 
-app.get("/api/user/:id", function(req,res){
-console.log(req.params);
-  res.json([]);
 
+
+app.get("/api/users/:id", function(req,res){
+      console.log("Inside: /api/user/:id");
+      db.User.findByPk(req.params.id, {
+      // JOIN with locations, using the Trip through table
+      include: [{ model: db.Product, through: db.Cart, as: 'user_Products' }]
+    }).then(function(userData){
+      if (!userData) {
+        res.status(404).json({ message: 'No user found with this id!' });
+        return;
+      }
+      console.log("hello");
+      res.status(200).json(userData);
+    });
+
+    
 });
 
+
+
+// creating my post route to create a user
 app.post("/api/user", function(req,res){
-console.log(req.body);
-  res.json([]);
-
+  // I will create a new user here with this function
+  // using the User model to create user login's 
+    console.log("hello inside post route")
+    // Save the users information
+    db.User.create(req.body).then(function(){
+      return res.json(true);
+    });
+ 
 });
+
+
+
 
 app.get("/api/product", function(req,res){
-
-  res.json([]);
-
-});
-
-app.post("/api/product/:id", function(req,res){
-
-  res.json([]);
+ 
+    db.Product.findAll().then(function(productData){
+      console.log(productData);
+      res.status(200).json(productData);
+    });
+   
 
 });
+
+app.post("/api/product", function(req,res){
+  
+  console.log("hello inside post")
+
+  console.log(req.body)
+ 
+db.Product.create(req.body).then(function(){
+    return res.json(true);
+  });
+});
+
 
 app.get("/api/user/:id/cart/product", function(req,res){
 
-  res.json([]);
+  db.User.findByPk(req.params.id,{ include:[{model:db.Product,through:db.Cart,as:"user_Products"}] }).then(function(cartData){
+    console.log(cartData.user_Products);
+    res.status(200).json(cartData.user_Products);
+  });
 
 });
 
 app.post("/api/user/:id/cart/product", function(req,res){
+ var data = {
+   user_id: req.params.id, 
+   product_id: req.body.product_id,
+ }
 
-  res.json([]);
-
+ db.Cart.create(data).then(function(){
+    return res.json(true);
+  });
 });
+
+
 
 
 
@@ -63,7 +113,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });
 

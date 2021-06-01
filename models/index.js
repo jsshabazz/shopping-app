@@ -29,7 +29,7 @@ User.belongsToMany(Product, {
   },
   // Define an alias for when data is retrieved
   //call this whatever you link - related to how the data will be returned (which key)
-  as: 'planned_Carts'
+  as: 'user_Products'
 });
 
 Product.belongsToMany(User, {

@@ -13,15 +13,8 @@ Cart.init(
       primaryKey: true,
       autoIncrement: true
     },
-    Cart_budget: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: true
-    },
-    user_amount: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 1
-    },
+    
+    
   //🔑 We want a Cart model to be the joining table (or through table, in Sequelize terms) between products and users, 
   //so we create foreign key columns for both. 
   //See the following code for an example:

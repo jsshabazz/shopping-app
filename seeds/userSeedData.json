@@ -1,0 +1,55 @@
+[
+    {
+      "name": "Sal",
+      "email": "sal@hotmail.com",
+      "password": "password1234"
+    },
+    {
+      "name": "Lernantino",
+      "email": "lernantino@gmail.com",
+      "password": "coolPw2020"
+    },
+    {
+      "name": "Amiko",
+      "email": "amiko2k20@aol.com",
+      "password": "amiko2k20!"
+    },
+    {
+        "name": "John",
+        "email": "John@yahoo.com",
+        "password": "johnny2k20"
+      },
+      {
+        "name": "Gee",
+        "email": "Gee@gmail.com",
+        "password": "ganstagee123!"
+      },
+      {
+        "name": "Bob",
+        "email": "Bob@gmail.com",
+        "password": "passupword!"
+      },
+      {
+        "name": "Kim",
+        "email": "Kim@yahoo.com",
+        "password": "passoo123!"
+      },
+      {
+        "name": "Pam",
+        "email": "Pam12@yahoo.com",
+        "password": "pamz5123!"
+      },
+      {
+        "name": "Freakie",
+        "email": "Freakiegurl@yahoo.com",
+        "password": "Freakiegur623!"
+      },
+      {
+        "name": "Ben",
+        "email": "Ben1@yahoo.com",
+        "password": "password_3!"
+      }
+
+
+  ]
+  
