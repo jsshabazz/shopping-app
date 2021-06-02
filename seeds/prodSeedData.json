@@ -2,7 +2,7 @@
     {
     
     "Product_name": "Fresh Bananas",
-    "Product_Product_price": 3,
+    "Product_price": 3,
     "Product_image": "https://images-na.ssl-images-amazon.com/images/I/21DejQuoT2L._AC_UL600_SR600,600_.jpg",
     "Product_description":"https://www.walmart.com/grocery/ip/Bananas-each/44390948"
 
@@ -55,9 +55,9 @@
     {
         
         "Product_name": "tonka dump truck",
-        "Product_price":42,
-        "Product_image": "https://target.scene7.com/is/image/Target/GUEST_35b3d178-9925-4c9c-8d66-87751ea9d520?wid=488&hei=488&fmt=pjpeg",
-        "Product_description":"https://www.amazon.com/Tonka-Classic-Steel-Mighty-Vehicle/dp/B000PEHDFG"
+        "Product_price":300,
+        "Product_image": "https://www.lego.com/cdn/cs/set/assets/blt149a36e6328fd9a8/76178.jpg?fit=bounds&format=jpg&quality=80&width=528&height=528&dpr=1",
+        "Product_description":"https://www.lego.com/en-us/product/daily-bugle-76178"
     },
     {
         
