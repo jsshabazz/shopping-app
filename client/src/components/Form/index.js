@@ -22,16 +22,16 @@ class Form extends Component {
       [name]: value
     });
 
-    // //or
-    // if (this.state.password.length < 15 && name === "password") {
-    //   this.setState({
-    //     [name]: value
-    //   });
-    // }else if(name === "firstName" || name === "lastName" ) {
-    //   this.setState({
-    //     [name]: value
-    //   });
-    // }
+    //or
+    if (this.state.password.length < 15 && name === "password") {
+      this.setState({
+        [name]: value
+      });
+    }else if(name === "firstName" || name === "lastName" ) {
+      this.setState({
+        [name]: value
+      });
+    }
 
 
   };
