@@ -1,17 +1,44 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Product from "./pages/Products";
+import Form from "./components/Form";
 import "./App.css";
+
 
 function App() {
   return (
     <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
-      </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/">Home</a>
+      <a class="nav-item nav-link" href="/product">Products</a>
+      <a class="nav-item nav-link" href="/cart">Cart</a>
+    </div>
+  </div>
+</nav>
+<Router>
+    <Switch>
+      <Route exact path="/"><Home/></Route>
+      <Route exact path="/cart"><Cart/></Route>
+      <Route exact path="/login"><Login/></Route>
+      <Route exact path="/signup"><Signup/></Route>
+      <Route exact path="/product"><Product/></Route>
+    </Switch>
+    </Router>
     </div>
   );
 }

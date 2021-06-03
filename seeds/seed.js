@@ -15,49 +15,53 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-console.log(users);
+// console.log("USERS",users);
     const products = await Product.bulkCreate(
      prodSeedData
     );
-  console.log(products);
+  // console.log("PRODUCTS",products);
 // Here, I want to create a cart for a specific user
         const cartArr = [];
   for (const { id } of users) {
+    //this is a loop that iterates through all our users and gives us each id
+    
+      //step 1 
+      //what : While looking at each  user (id) start a for loop that will run 5 times
+      //Why - for each user we will create r5 carts with their user id and a random product id
+      //how: With a for loop
+      for (let step = 0; step < 5; step++) {
+        //Step 2
+    //what: Inside the for loop that runs 5 times I will create a cart with the user id
+    //why: to generate a cart assosicated with that user
+    // how: 
     const newCart = await Cart.create({
-      //Solve - how do you create mutiple carts for the same user that gets assigned 5 random products each
       user_id: id,
-      product_id: products[0].id
+      //step three: 
+      // what assign a random product id to the cart
+      // why: so that each user has differnt products
+      // how: ???
+      
+      product_id: products[Math.floor(Math.random() * products.length)].id
     });
+      
+     
+    //step four:
+    //add the new cart to the caratArr list
+    //push method
+    //to havea  collection of all the carts
     cartArr.push(newCart);
   }
-//write a funtion that takes in an array of numbers and returns a new array with each number doubled
+  }
 
-// I first would create my array of numbers from 0 through 9.
-// Once the array is written I create a new array that doubles each new number in the array.
-// [0,1,2,3,4,5,6,7,8,9]
-// [0,2,4,6,8,10,12,14,18]
-// muiltple 0*0, 2*2, 3*3, 4*4, 5*5, 6*6, 7*7, 8*8, 9*9
-// step one creat an empty array
-//step two - iterated through the inbput array - 
-// steop three - while examining each number nultiply by 2
-//step three - push product to new array
-//set four - once fo loop concludes return new array
-
-// var output = 0;
-//     for(var i =0; i <= number; i++){
-//         output = output = number
-//     }
-//     return output 
-// }
 
   const newUserArr = [];
-  for(var i = 0; i < users.length; i++ {
+  for(var i = 0; i < users.length; i++ ){
     newUserArr.push(users[i].get({ plain: true }));
   };
   console.log(newUserArr);
 
   const newProductsArr = [];
-  for(var i = 0; i < users.length; i++ {
+  for(var i = 0; i < users.length; i++ ){
     newProductsArr.push(products[i].get({ plain: true }));
   };
   console.log(newUserArr);

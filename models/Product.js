@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create our Product model
-class Product extends Model {}
+class Product extends Model { }
 
 // create fields/columns for Product model
 Product.init(
