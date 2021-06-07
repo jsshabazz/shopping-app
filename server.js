@@ -92,8 +92,10 @@ app.get("/api/user/:id/cart/product", function(req,res){
 });
 
 app.post("/api/user/:id/cart/product", function(req,res){
+  console.log("PARAMS",req.params)
+  console.log("BODY",req.body)
  var data = {
-   user_id: req.params.id, 
+   user_id: 1, 
    product_id: req.body.product_id,
  }
 

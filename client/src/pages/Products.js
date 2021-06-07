@@ -27,9 +27,19 @@ this.setState({ products: data });
     // write handlebutton click function here
     handleBtnClick = (event) => {
         // Get the data-value of the clicked button
-        const btnType = event.target.attributes.getNamedItem("data-value").value;
-        fetch("/api/user/:id/cart/product")
+        console.log("productclick")
+        const product_id = event.target.getAttribute("data-value");
+        console.log ("product_id", product_id)
+        const user_id = 1;
+        fetch("/api/user/:id/cart/product", { method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        
+        body: JSON.stringify({product_id})})
         .then(function (data) {
+            console.log(data)
             return data.json()})
 
             
@@ -42,8 +52,8 @@ this.setState({ products: data });
             <div>
                 <ul className="list-group">
                     {this.state.products.map((product, i) => (
-                        <li className="list-group-item" key={i}onClick={this.handleBtnClick}data-value={product.id}>
-                            {product.Product_name}
+                        <li className="list-group-item" key={i}>
+                           <button onClick={this.handleBtnClick} data-value={product.id}>{product.Product_name}</button> 
                         </li>
                     ))}
                 </ul>
